@@ -37,15 +37,19 @@
     <section id="portfolio" class="section">
         <h2>Portfolio</h2>
         <div class="portfolio-gallery">
-            <img src="project1.jpg" alt="プロジェクト1">
-            <img src="project2.jpg" alt="プロジェクト2">
+            <div class="portfolio-slider">
+                <img src="project1.jpg" alt="プロジェクト1">
+                <img src="project2.jpg" alt="プロジェクト2">
+                <img src="project3.jpg" alt="プロジェクト3">
+                <img src="project4.jpg" alt="プロジェクト4">
+            </div>
         </div>
     </section>
 
     <!-- Contact セクション -->
     <section id="contact" class="section">
         <h2>Contact</h2>
-        <form>
+        <form class="contact-form">
             <input type="text" placeholder="お名前" required>
             <input type="email" placeholder="メールアドレス" required>
             <textarea placeholder="お問い合わせ内容"></textarea>
@@ -57,7 +61,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             const fadeElements = document.querySelectorAll(".fade-in");
 
-            // Scroll animation
             fadeElements.forEach((element) => {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach((entry) => {
@@ -69,6 +72,21 @@
                 
                 observer.observe(element);
             });
+
+            // Portfolio スライドアニメーション
+            const portfolioSlider = document.querySelector(".portfolio-slider");
+            let scrollAmount = 0;
+
+            setInterval(() => {
+                scrollAmount += 200;
+                if (scrollAmount >= portfolioSlider.scrollWidth / 2) {
+                    scrollAmount = 0;
+                }
+                portfolioSlider.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }, 3000);
         });
     </script>
 </body>
