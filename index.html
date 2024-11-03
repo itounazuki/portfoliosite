@@ -3,52 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAIL</title>
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="黒を基調としたスタイリッシュな架空のコーポレートサイト">
+    <title>架空のコーポレートサイト</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(to right, #1a1a1a, #333);
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .service-card {
+            display: inline-block;
+            background-color: #333;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-gallery img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #666;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <h1>MAIL</h1>
-    <form action="https://api.staticforms.xyz/submit" method="POST" target="_self">
-        <input type="hidden" name="accessKey" value="29121ceb-e8d9-4073-822c-7da263625b67">
-        <input type="hidden" name="redirectTo" value="https://itofficial881.github.io/mail/thank-you.html">
-        
-        <label for="name">name:</label>
-        <input type="text" id="name" name="name" required>
+    <!-- ヘッダーセクション -->
+    <header>
+        <h1 class="fade-in">架空のコーポレートサイト</h1>
+        <p class="fade-in">洗練されたデザインと革新</p>
+    </header>
 
-        <label for="email">mail address:</label>
-        <input type="email" id="email" name="email" required>
+    <!-- About Us セクション -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>私たちは、デザインとテクノロジーを融合させるクリエイティブカンパニーです。</p>
+    </section>
 
-        <label for="details">Details:</label>
-        <select id="details" name="details" required onchange="updateMessage()">
-            <option value="">選択してください</option>
-            <option value="問い合わせ">問い合わせ</option>
-            <option value="ご依頼について">ご依頼について</option>
-            <option value="メッセージ">メッセージ</option>
-        </select>
+    <!-- Services セクション -->
+    <section id="services" class="section">
+        <h2>Services</h2>
+        <div class="service-card">
+            <h3>Web Design</h3>
+            <p>モダンでレスポンシブなウェブサイトを提供します。</p>
+        </div>
+        <div class="service-card">
+            <h3>SEO Optimization</h3>
+            <p>検索エンジンに最適化されたウェブサイトを構築します。</p>
+        </div>
+    </section>
 
-        <label for="message">message:</label>
-        <textarea id="message" name="message" required></textarea>
+    <!-- Portfolio セクション -->
+    <section id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <div class="portfolio-gallery">
+            <img src="project1.jpg" alt="プロジェクト1">
+            <img src="project2.jpg" alt="プロジェクト2">
+        </div>
+    </section>
 
-        <button type="submit">submit</button>
-    </form>
+    <!-- Contact セクション -->
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="お名前" required>
+            <input type="email" placeholder="メールアドレス" required>
+            <textarea placeholder="お問い合わせ内容"></textarea>
+            <button type="submit">送信</button>
+        </form>
+    </section>
 
     <script>
-        function updateMessage() {
-            const detailsSelect = document.getElementById("details");
-            const messageTextarea = document.getElementById("message");
-            const selectedValue = detailsSelect.value;
+        document.addEventListener("DOMContentLoaded", () => {
+            const fadeElements = document.querySelectorAll(".fade-in");
 
-            if (selectedValue === "問い合わせ") {
-                messageTextarea.value = "[問い合わせ]下線より下に問い合わせ内容を入力して下さい\nーーーーーーーーーーーーーーーーーーーーーーーーー";
-            } else if (selectedValue === "ご依頼について") {
-                messageTextarea.value = "[ご依頼について]ご依頼をご検討いただき、ありがとうございます。下線より下の項目を入力して下さい。\nーーーーーーーーーーーーーーーーーーーーーーーーー";
-            } else if (selectedValue === "メッセージ") {
-                messageTextarea.value = "[メッセージ]下線より下にメッセージを入力して下さい\nーーーーーーーーーーーーーーーーーーーーーーーーー";
-            } else {
-                messageTextarea.value = "";
-            }
-        }
+            // Scroll animation
+            fadeElements.forEach((element) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            element.classList.add("fade-in");
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(element);
+            });
+        });
     </script>
 </body>
 </html>
