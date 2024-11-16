@@ -14,7 +14,12 @@ body {
 header {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(to right, #1a1a1a, #333);
+    background-image: url('./main/paku_klakkws_TP_V.jpg'); /* 背景画像を設定 */
+    background-size: cover; /* ヘッダーのサイズに合わせる */
+    background-position: center; /* 画像を中央に配置 */
+    background-repeat: no-repeat; /* 繰り返しを無効化 */
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* テキストの視認性を向上 */
 }
 
 h1, h2 {
